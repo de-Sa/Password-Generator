@@ -22,9 +22,11 @@
     ax="64"
     >
 
-    <button>Copiar Senha</button>
+    <button id="copy">Copiar Senha</button>
 
     <script>
+        const inputEl = document.querySelector("#password")
+
         let passwordLenght = 16
 
         function generatePassword() {
@@ -37,9 +39,13 @@
                 password += chars.substring(randomNumber, randomNumber + 1)
 
             }
-            const inputEl = document.querySelector("#password")
+            
             inputEl.value = password
 
+        }
+
+        function copy() {
+            navigator.clipboard.writeText(inputEl.value)
         }
 
         const passwordLenghtEl = document.querySelector("#password-lenght")
@@ -47,6 +53,9 @@
             passwordLenght = passwordLenghtEl.value
             generatePassword()
         })
+
+        const copyButtonEl = document.querySelector("#copy")
+        copyButtonEl.addEventListener('click', copy)
 
         generatePassword()
     </script>
