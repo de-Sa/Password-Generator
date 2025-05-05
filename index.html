@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
     <title>Password Page</title>
 </head>
+
 <body>
     <main>
-    <section class="hero">
-        <h1 class="title">Gerador de Senha</h1>
-        <p class="subtitle">Utilize o meu gerador online para criar uma senha forte e segura</p>
-    </section>
-    
+        <section class="hero">
+            <h1 class="title">Gerador de Senha</h1>
+            <p class="subtitle">Utilize o meu gerador online para criar uma senha forte e segura</p>
+        </section>
+
         <section class="box">
             <div class="password">
                 <div class="text">
-                    <input type="text" 
-                    name="password" 
-                    id="password"
-                    >
+                    <input type="text" name="password" id="password">
                 </div>
                 <div class="actions">
-                    <button id="copy-1" >
+                    <button id="copy-1">
                         <img src="copy.svg" width="42">
                     </button>
                     <button id="renew">
@@ -39,16 +40,34 @@
 
                 </div>
             </div>
-        </section>   
+        </section>
 
-        <input 
-        type="range"
-        name="password-lenght"
-        id="password-lenght"
-        value="16"
-        min="4"
-        max="32"
-        >
+        <section class="box customize">
+            <h3 class="title">Personalizar</h3>
+            <div class="actions">
+                <div class="password-lenght"></div>
+                <p>Tamanho: <span id="password-length-text">16</span></p>
+                <input type="range" name="password-lenght" id="password-lenght" value="16" min="4" max="32">
+                <div class="config">
+                    <label class="checkbox-container">
+                        <span class="text">Maiúsculas</span>
+                        <input type="checkbox" class="uppercase-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Números</span>
+                        <input type="checkbox" class="numbers-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <span class="text">Símbulos</span>
+                        <input type="checkbox" class="symbol-check" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
 
         <button id="copy-2">Copiar Senha</button>
     </main>
@@ -59,16 +78,16 @@
         let passwordLenght = 16
 
         function generatePassword() {
-            const chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]" 
+            const chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
 
             let password = ""
 
-            for(let i = 0; i < passwordLenght; i++){
+            for (let i = 0; i < passwordLenght; i++) {
                 const randomNumber = Math.floor(Math.random() * chars.length)
                 password += chars.substring(randomNumber, randomNumber + 1)
 
             }
-            
+
             inputEl.value = password
 
         }
@@ -78,7 +97,7 @@
         }
 
         const passwordLenghtEl = document.querySelector("#password-lenght")
-        passwordLenghtEl.addEventListener("input", function(){
+        passwordLenghtEl.addEventListener("input", function () {
             passwordLenght = passwordLenghtEl.value
             generatePassword()
         })
@@ -89,4 +108,5 @@
         generatePassword()
     </script>
 </body>
+
 </html>
