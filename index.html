@@ -38,8 +38,8 @@
 
         <input 
         type="range"
-        name="password-length"
-        id="password-length"
+        name="password-lenght"
+        id="password-lenght"
         value="16"
         min="4"
         max="64"
@@ -78,8 +78,8 @@
             generatePassword()
         })
 
-        const copyButtonEl = document.querySelector("#copy")
-        copyButtonEl.addEventListener('click', copy)
+        document.querySelector("#copy-1").addEventListener("click", copy)
+        document.querySelector("#copy-2").addEventListener("click", copy)
 
         generatePassword()
     </script>
